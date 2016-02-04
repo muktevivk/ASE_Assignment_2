@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Weather App</string>
+    <string name="login_screen">Login</string>
+    <string name="weather_screen">Weather</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_weather">WeatherActivity</string>
+</resources>
