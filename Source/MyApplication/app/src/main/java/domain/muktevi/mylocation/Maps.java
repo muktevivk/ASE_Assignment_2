@@ -27,11 +27,11 @@ import java.util.List;
 
 public class Maps extends FragmentActivity implements OnMapReadyCallback {
 
-    public GoogleMap mMap;
-    public Geocoder geocoder;
+    public GoogleMap gMap;
+    public Geocoder gCoder;
     public LatLng userCurrentLocationCorodinates = null;
-    public double latitute = 0, longitude = 0;
-    public StringBuilder userAddress = new StringBuilder();
+    public double lat = 0, longi = 0;
+    public StringBuilder uAddress = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,8 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        mMap = googleMap;
-        geocoder = new Geocoder(this);
+        gMap = googleMap;
+        gCoder = new Geocoder(this);
 
         // Add a marker in Sydney and move the camera
         final LocationManager userCurrentLocation = (LocationManager) this
@@ -63,22 +63,22 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                     return;
                 }
 
-                latitute = userCurrentLocation
+                lat = userCurrentLocation
                         .getLastKnownLocation(LocationManager.GPS_PROVIDER)
                         .getLatitude();
-                longitude = userCurrentLocation
+                longi = userCurrentLocation
                         .getLastKnownLocation(LocationManager.GPS_PROVIDER)
                         .getLongitude();
-                userCurrentLocationCorodinates = new LatLng(latitute,longitude);
-                //Getting the address of the user based on latitude and longitude.
+                userCurrentLocationCorodinates = new LatLng(lat,longi);
+                //Getting the address of the user based on latitude and longi.
                 try {
-                    List<Address> addresses = geocoder.getFromLocation(latitute, longitude, 1);
+                    List<Address> addresses = gCoder.getFromLocation(lat, longi, 1);
                     Address address = addresses.get(0);
-                    userAddress =  new StringBuilder();
+                    uAddress =  new StringBuilder();
                     for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
-                        userAddress.append(address.getAddressLine(i)).append("\t");
+                        uAddress.append(address.getAddressLine(i)).append("\t");
                     }
-                    userAddress.append(address.getCountryName()).append("\t");
+                    uAddress.append(address.getCountryName()).append("\t");
 
                 }
                 catch(Exception ex)
@@ -86,11 +86,11 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
                     ex.printStackTrace();
                 }
                 //Setting our image as the marker icon.
-                mMap.addMarker(new MarkerOptions().position(userCurrentLocationCorodinates)
-                        .title("Your current address.").snippet(userAddress.toString())
+                gMap.addMarker(new MarkerOptions().position(userCurrentLocationCorodinates)
+                        .title("Your current address.").snippet(uAddress.toString())
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.location_marker)));
                 //Setting the zoom level of the map.
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userCurrentLocationCorodinates, 7));
+                gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userCurrentLocationCorodinates, 7));
 
             }
 
@@ -122,22 +122,22 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         userCurrentLocation.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                 0, 0, userCurrentLocationListener);
         System.out.println("userCurrentLocation------" + userCurrentLocation);
-        latitute = userCurrentLocation
+        lat = userCurrentLocation
                 .getLastKnownLocation(LocationManager.GPS_PROVIDER)
                 .getLatitude();
-        longitude = userCurrentLocation
+        longi = userCurrentLocation
                 .getLastKnownLocation(LocationManager.GPS_PROVIDER)
                 .getLongitude();
-        userCurrentLocationCorodinates = new LatLng(latitute,longitude);
-        //Getting the address of the user based on latitude and longitude.
+        userCurrentLocationCorodinates = new LatLng(lat,longi);
+        //Getting the address of the user based on latitude and longi.
         try {
-            List<Address> addresses = geocoder.getFromLocation(latitute, longitude, 1);
+            List<Address> addresses = gCoder.getFromLocation(lat, longi, 1);
             Address address = addresses.get(0);
-            userAddress =  new StringBuilder();
+            uAddress =  new StringBuilder();
             for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
-                userAddress.append(address.getAddressLine(i)).append("\t");
+                uAddress.append(address.getAddressLine(i)).append("\t");
             }
-            userAddress.append(address.getCountryName()).append("\t");
+            uAddress.append(address.getCountryName()).append("\t");
 
         }
         catch(Exception ex)
@@ -145,11 +145,11 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
             ex.printStackTrace();
         }
         //Setting our image as the marker icon.
-        mMap.addMarker(new MarkerOptions().position(userCurrentLocationCorodinates)
-                .title("Your current address.").snippet(userAddress.toString())
+        gMap.addMarker(new MarkerOptions().position(userCurrentLocationCorodinates)
+                .title("Your current address.").snippet(uAddress.toString())
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.location_marker)));
         //Setting the zoom level of the map.
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userCurrentLocationCorodinates, 7));
+        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userCurrentLocationCorodinates, 7));
 
     }
 }
