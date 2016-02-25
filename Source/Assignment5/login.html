@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app = "fblogin">
+  <head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+        <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body ng-controller="fblogincontroller">
+    <div id="wrapper">
+  <div class="join">Login Here</div>
+      <div class="lock"></div>
+          <div class="clr"></div>
+            <div class="login-options">Login with Facebook.</div>
+                  
+                    <button class="facebook" style="height: 50px" ng-click="doSocialLogin()">Facebook</button>
+                    
+                    <div class="clr"><hr /></div>
+                        <div class="mail-text">Or Login using your email address.</div>
+                                <div class="forms">
+                                    <form action="" method="get" name="register">
+                                    
+                                    <input name="email" type="text" placeholder="Enter your email address..." size="70" onClick="border: 1px solid #30a8da;" id="mail"/>
+                                    <input name="password" type="password" placeholder="Enter a password..." size="70" onClick="border: 1px solid #30a8da;" id="password"/>
+                                    </form>
+                                    </div>
+            <button class="create-acc" style="height: 50px;">Login in</button>
+    </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js" type="application/javascript"></script>
+   <script src="js/fblogin.js" type="text/javascript"></script>
+
+  </body>
+</html>
