@@ -1,0 +1,4 @@
+edu\umkc\mongo\constants\MongoConstants.class
+edu\umkc\mongo\beans\UserBO.class
+edu\umkc\mongo\service\impl\UserCURDServiceImpl.class
+edu\umkc\mongo\utils\UserCURDUtils.class
