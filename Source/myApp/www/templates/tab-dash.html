@@ -1,0 +1,17 @@
+<ion-view view-title="Restaurants">
+  <ion-content class="padding">
+    
+      <div><input type="text" placeholder="food" ng-model="food"/>
+        <input type="button" value="Search" ng-click = "getFood()"/></div>
+    <div  style="margin-left: 10px; margin-top: 5px;">
+					<p><span style="font-family: cursive;"><b>Restaurant near you</b></span></p>
+					<div ng-repeat="venue in venues" >
+						<p><b>Name:</b> {{venue.name}} </p>
+						<p><b>address:</b> {{venue.location.address}}</p>
+						
+					</div>
+				</div>
+        
+        
+  </ion-content>
+</ion-view>
