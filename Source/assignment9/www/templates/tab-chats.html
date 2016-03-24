@@ -1,0 +1,28 @@
+<ion-view view-title="Weather">
+  <ion-content>
+      <div style="margin-left: 10px; margin-top: 5px;">
+     
+          <div>
+        <input type="button" value="Search" ng-click = "getWeather()"/>
+      </div>
+      
+          <div><p><span style="font-family: cursive;"><b>Weather</b></span></p>
+          </div>
+      <div>
+		<p>Temperature: {{temperatureSource}} F</p>
+		<p>Pressure: {{pressureSource}}</p>
+		<p>Description: {{descSource}}</p>
+    </div>  
+          
+        <div>
+          <p><span style="font-family: cursive;"><b>Current location</b></span></p>
+          </div>
+          <div>
+          <p>lat: {{lat}}</p>
+          <p>long: {{lon}}</p>
+        </div>      
+	</div>
+     
+      
+  </ion-content>
+</ion-view>
